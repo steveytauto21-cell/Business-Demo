@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Your Business Name Here – Professional Websites Philippines</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --glass-bg: rgba(255,255,255,0.04);
+    --glass-border: rgba(255,255,255,0.10);
+    --glass-hover: rgba(255,255,255,0.08);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #080c14;
+    color: #fff;
+    overflow-x: hidden;
+  }
+  h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
+
+  /* ── Background mesh ── */
+  .bg-mesh {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 10%, rgba(201,168,76,0.13) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 80% 80%, rgba(30,60,120,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 50% 50%, rgba(201,168,76,0.05) 0%, transparent 70%);
+  }
+  .grain {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: .025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px;
+  }
+
+  /* ── Glass card ── */
+  .glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  .glass:hover { background: var(--glass-hover); }
+
+  /* ── Gold gradient text ── */
+  .gold-text {
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+
+  /* ── Navbar ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+    background: rgba(8,12,20,0.7);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+
+  /* ── Hero ── */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .hero-orb {
+    position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none;
+  }
+  .hero-orb-1 { width: 600px; height: 600px; background: rgba(201,168,76,0.08); top: -100px; left: -150px; }
+  .hero-orb-2 { width: 400px; height: 400px; background: rgba(30,80,200,0.10); bottom: 0; right: -100px; }
+
+  /* ── Pulse button ── */
+  @keyframes pulse-ring {
+    0%   { transform: scale(1);   opacity: .7; }
+    100% { transform: scale(1.55); opacity: 0; }
+  }
+  .pulse-btn { position: relative; display: inline-block; }
+  .pulse-btn::before, .pulse-btn::after {
+    content: ''; position: absolute; inset: 0; border-radius: 9999px;
+    background: var(--gold); animation: pulse-ring 2s ease-out infinite;
+  }
+  .pulse-btn::after { animation-delay: .9s; }
+  .pulse-btn a {
+    position: relative; z-index: 1;
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 18px 44px; border-radius: 9999px;
+    background: linear-gradient(135deg, var(--gold), #a07830, var(--gold-light));
+    font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 1.1rem;
+    color: #080c14; text-decoration: none; letter-spacing: .03em;
+    box-shadow: 0 8px 32px rgba(201,168,76,0.35);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .pulse-btn a:hover { transform: scale(1.04); box-shadow: 0 12px 40px rgba(201,168,76,0.5); }
+
+  /* ── Badge ── */
+  .badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 16px; border-radius: 9999px;
+    border: 1px solid rgba(201,168,76,0.35);
+    background: rgba(201,168,76,0.07);
+    font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-light);
+  }
+
+  /* ── Divider ── */
+  .gold-line {
+    width: 60px; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0 auto;
+  }
+
+  /* ── Carousel ── */
+  .carousel-wrap { position: relative; overflow: hidden; border-radius: 20px; }
+  .carousel-track { display: flex; transition: transform .6s cubic-bezier(.77,0,.175,1); }
+  .carousel-slide { min-width: 100%; position: relative; }
+  .carousel-slide img { width: 100%; height: 480px; object-fit: cover; display: block; }
+  .slide-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(8,12,20,.75) 0%, transparent 60%);
+  }
+  .slide-caption {
+    position: absolute; bottom: 32px; left: 32px;
+    font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300;
+    color: rgba(255,255,255,0.9);
+  }
+  .carousel-btn {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    width: 48px; height: 48px; border-radius: 50%;
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px); cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 1.2rem; transition: background .2s;
+    z-index: 10;
+  }
+  .carousel-btn:hover { background: rgba(201,168,76,0.25); border-color: var(--gold); }
+  .carousel-btn.prev { left: 16px; }
+  .carousel-btn.next { right: 16px; }
+  .carousel-dots { display: flex; gap: 8px; justify-content: center; margin-top: 16px; }
+  .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: rgba(255,255,255,0.2); cursor: pointer; transition: all .3s;
+  }
+  .dot.active { background: var(--gold); width: 24px; border-radius: 4px; }
+
+  /* ── Review cards ── */
+  .review-card {
+    padding: 32px; border-radius: 20px; transition: transform .3s;
+  }
+  .review-card:hover { transform: translateY(-6px); }
+  .avatar {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), #6a4a10);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 1.1rem; color: #080c14; flex-shrink: 0;
+  }
+
+  /* ── Stats strip ── */
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 700;
+    line-height: 1;
+  }
+
+  /* ── Features ── */
+  .feature-icon {
+    width: 52px; height: 52px; border-radius: 14px;
+    background: rgba(201,168,76,0.10); border: 1px solid rgba(201,168,76,0.20);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; flex-shrink: 0;
+  }
+
+  /* ── Social links ── */
+  .social-btn {
+    width: 44px; height: 44px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid var(--glass-border); background: var(--glass-bg);
+    transition: all .25s; text-decoration: none; color: #fff; font-size: 1rem;
+  }
+  .social-btn:hover { background: rgba(201,168,76,0.15); border-color: var(--gold); color: var(--gold); }
+
+  /* ── Scroll reveal ── */
+  .reveal { opacity: 0; transform: translateY(32px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ── Section spacing ── */
+  section { position: relative; z-index: 1; }
+</style>
+</head>
+<body>
+
+<!-- Background -->
+<div class="bg-mesh"></div>
+<div class="grain"></div>
+
+<!-- ════════════════════ NAVBAR ════════════════════ -->
+<nav>
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#c9a84c,#6a4a10);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1rem;color:#fff;">YB</div>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;letter-spacing:.04em;">Your Business Name Here</span>
+    </div>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#services" class="text-sm text-white/60 hover:text-white transition-colors">Services</a>
+      <a href="#gallery" class="text-sm text-white/60 hover:text-white transition-colors">Gallery</a>
+      <a href="#reviews" class="text-sm text-white/60 hover:text-white transition-colors">Reviews</a>
+      <a href="tel:09000000000" class="text-sm px-4 py-2 rounded-full border transition-all" style="border-color:rgba(201,168,76,.4);color:var(--gold);background:rgba(201,168,76,.07);">📞 Call Us</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ════════════════════ HERO ════════════════════ -->
+<section id="hero">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="max-w-4xl mx-auto px-6 text-center pt-24">
+    <div class="badge mb-8 reveal">⭐ Trusted by Local Businesses Across the Philippines</div>
+    <h1 class="reveal" style="font-size:clamp(2.8rem,7vw,5rem);font-weight:700;line-height:1.1;letter-spacing:-.01em;margin-bottom:28px;">
+      Grow Your Business<br/>
+      <span class="gold-text">with a Professional</span><br/>
+      Website.
+    </h1>
+    <p class="reveal" style="font-size:1.15rem;color:rgba(255,255,255,0.58);max-width:560px;margin:0 auto 48px;line-height:1.7;font-weight:300;">
+      Lightning-fast, mobile-optimized websites designed to convert visitors into paying customers — built specifically for Filipino businesses.
+    </p>
+    <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-6 mb-12">
+      <div class="pulse-btn">
+        <a href="tel:09000000000">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Call Us Today
+        </a>
+      </div>
+      <a href="#gallery" style="color:rgba(255,255,255,.55);font-size:.9rem;text-decoration:none;display:flex;align-items:center;gap:6px;">
+        See Our Work
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+    <!-- Trust badges -->
+    <div class="reveal flex flex-wrap justify-center gap-4">
+      <div class="glass rounded-2xl px-5 py-3 flex items-center gap-3">
+        <span style="font-size:1.4rem;">⚡</span>
+        <div class="text-left"><div style="font-size:.75rem;color:rgba(255,255,255,.45);letter-spacing:.08em;">LOAD TIME</div><div style="font-size:.9rem;font-weight:500;">Under 2 Seconds</div></div>
+      </div>
+      <div class="glass rounded-2xl px-5 py-3 flex items-center gap-3">
+        <span style="font-size:1.4rem;">📱</span>
+        <div class="text-left"><div style="font-size:.75rem;color:rgba(255,255,255,.45);letter-spacing:.08em;">OPTIMIZED</div><div style="font-size:.9rem;font-weight:500;">Mobile-First Design</div></div>
+      </div>
+      <div class="glass rounded-2xl px-5 py-3 flex items-center gap-3">
+        <span style="font-size:1.4rem;">🇵🇭</span>
+        <div class="text-left"><div style="font-size:.75rem;color:rgba(255,255,255,.45);letter-spacing:.08em;">BASED IN</div><div style="font-size:.9rem;font-weight:500;">Philippines</div></div>
+      </div>
+    </div>
+  </div>
+  <!-- Scroll indicator -->
+  <div style="position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,.25);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;">
+    <span>Scroll</span>
+    <div style="width:1px;height:40px;background:linear-gradient(to bottom,rgba(201,168,76,.5),transparent);"></div>
+  </div>
+</section>
+
+<!-- ════════════════════ STATS ════════════════════ -->
+<section style="padding:80px 0;">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="glass rounded-3xl p-8 grid grid-cols-2 md:grid-cols-4 gap-8 reveal">
+      <div class="text-center">
+        <div class="stat-num gold-text">50+</div>
+        <div style="font-size:.8rem;color:rgba(255,255,255,.45);margin-top:4px;letter-spacing:.06em;text-transform:uppercase;">Clients Served</div>
+      </div>
+      <div class="text-center">
+        <div class="stat-num gold-text">3-5</div>
+        <div style="font-size:.8rem;color:rgba(255,255,255,.45);margin-top:4px;letter-spacing:.06em;text-transform:uppercase;">Day Delivery</div>
+      </div>
+      <div class="text-center">
+        <div class="stat-num gold-text">100%</div>
+        <div style="font-size:.8rem;color:rgba(255,255,255,.45);margin-top:4px;letter-spacing:.06em;text-transform:uppercase;">Mobile Ready</div>
+      </div>
+      <div class="text-center">
+        <div class="stat-num gold-text">5★</div>
+        <div style="font-size:.8rem;color:rgba(255,255,255,.45);margin-top:4px;letter-spacing:.06em;text-transform:uppercase;">Avg. Rating</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ SERVICES ════════════════════ -->
+<section id="services" style="padding:80px 0;">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <div class="badge mb-5">What We Offer</div>
+      <h2 style="font-size:clamp(2rem,5vw,3rem);font-weight:700;margin-bottom:16px;">Everything Your Business<br/><span class="gold-text">Needs to Succeed Online</span></h2>
+      <div class="gold-line mt-6"></div>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="glass rounded-2xl p-7 reveal">
+        <div class="feature-icon mb-5">🎨</div>
+        <h3 style="font-size:1.3rem;font-weight:600;margin-bottom:10px;">Custom Design</h3>
+        <p style="color:rgba(255,255,255,.5);font-size:.9rem;line-height:1.7;">Unique, branded websites tailored to your industry — no generic templates. Built to make your business stand out.</p>
+      </div>
+      <div class="glass rounded-2xl p-7 reveal" style="transition-delay:.1s">
+        <div class="feature-icon mb-5">⚡</div>
+        <h3 style="font-size:1.3rem;font-weight:600;margin-bottom:10px;">Speed Optimized</h3>
+        <p style="color:rgba(255,255,255,.5);font-size:.9rem;line-height:1.7;">Fast-loading pages keep customers engaged. Slow websites lose sales — ours won't.</p>
+      </div>
+      <div class="glass rounded-2xl p-7 reveal" style="transition-delay:.2s">
+        <div class="feature-icon mb-5">📈</div>
+        <h3 style="font-size:1.3rem;font-weight:600;margin-bottom:10px;">Built to Convert</h3>
+        <p style="color:rgba(255,255,255,.5);font-size:.9rem;line-height:1.7;">Strategic layouts with clear calls-to-action that turn visitors into leads and customers into loyal clients.</p>
+      </div>
+      <div class="glass rounded-2xl p-7 reveal" style="transition-delay:.3s">
+        <div class="feature-icon mb-5">🔍</div>
+        <h3 style="font-size:1.3rem;font-weight:600;margin-bottom:10px;">SEO Ready</h3>
+        <p style="color:rgba(255,255,255,.5);font-size:.9rem;line-height:1.7;">Be found on Google. Every site we build follows SEO best practices so customers find you first.</p>
+      </div>
+      <div class="glass rounded-2xl p-7 reveal" style="transition-delay:.4s">
+        <div class="feature-icon mb-5">📱</div>
+        <h3 style="font-size:1.3rem;font-weight:600;margin-bottom:10px;">Mobile First</h3>
+        <p style="color:rgba(255,255,255,.5);font-size:.9rem;line-height:1.7;">Over 90% of Filipinos browse on their phones. Your site will look perfect on every screen size.</p>
+      </div>
+      <div class="glass rounded-2xl p-7 reveal" style="transition-delay:.5s">
+        <div class="feature-icon mb-5">🤝</div>
+        <h3 style="font-size:1.3rem;font-weight:600;margin-bottom:10px;">Local Support</h3>
+        <p style="color:rgba(255,255,255,.5);font-size:.9rem;line-height:1.7;">Talk to a real person who understands the Philippine market. No bots, no overseas handoffs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ GALLERY / CAROUSEL ════════════════════ -->
+<section id="gallery" style="padding:80px 0;">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="text-center mb-12 reveal">
+      <div class="badge mb-5">Our Portfolio</div>
+      <h2 style="font-size:clamp(2rem,5vw,3rem);font-weight:700;margin-bottom:8px;">Built for Businesses<br/><span class="gold-text">Like Yours</span></h2>
+      <div class="gold-line mt-6"></div>
+    </div>
+    <div class="carousel-wrap reveal">
+      <div class="carousel-track" id="track">
+        <div class="carousel-slide">
+          <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1200&q=80&auto=format&fit=crop" alt="Modern Architecture"/>
+          <div class="slide-overlay"></div>
+          <div class="slide-caption">Modern Commercial Space — Makati</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80&auto=format&fit=crop" alt="Business Interior"/>
+          <div class="slide-overlay"></div>
+          <div class="slide-caption">Premium Business Interior — BGC</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?w=1200&q=80&auto=format&fit=crop" alt="Retail Store"/>
+          <div class="slide-overlay"></div>
+          <div class="slide-caption">Retail & Café Concept — QC</div>
+        </div>
+      </div>
+      <button class="carousel-btn prev" onclick="slide(-1)">&#8592;</button>
+      <button class="carousel-btn next" onclick="slide(1)">&#8594;</button>
+    </div>
+    <div class="carousel-dots" id="dots">
+      <div class="dot active" onclick="goTo(0)"></div>
+      <div class="dot" onclick="goTo(1)"></div>
+      <div class="dot" onclick="goTo(2)"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ REVIEWS ════════════════════ -->
+<section id="reviews" style="padding:80px 0;">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="text-center mb-14 reveal">
+      <div class="badge mb-5">Client Reviews</div>
+      <h2 style="font-size:clamp(2rem,5vw,3rem);font-weight:700;margin-bottom:8px;">What Our Clients<br/><span class="gold-text">Are Saying</span></h2>
+      <div class="gold-line mt-6"></div>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <!-- Card 1 -->
+      <div class="glass review-card reveal">
+        <div style="color:#c9a84c;font-size:1.1rem;margin-bottom:16px;letter-spacing:2px;">★★★★★</div>
+        <p style="color:rgba(255,255,255,.7);font-size:.92rem;line-height:1.75;margin-bottom:20px;font-style:italic;">"Grabe yung improvement ng aming business! Maraming customers na ang nakakakita sa amin online. Highly recommended para sa lahat ng negosyante dito sa Pinas!"</p>
+        <div style="display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid rgba(255,255,255,.07);">
+          <div class="avatar">M</div>
+          <div>
+            <div style="font-weight:600;font-size:.95rem;">Maria Santos</div>
+            <div style="font-size:.78rem;color:rgba(255,255,255,.4);">Satisfied Client · Quezon City</div>
+          </div>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="glass review-card reveal" style="transition-delay:.15s">
+        <div style="color:#c9a84c;font-size:1.1rem;margin-bottom:16px;letter-spacing:2px;">★★★★★</div>
+        <p style="color:rgba(255,255,255,.7);font-size:.92rem;line-height:1.75;margin-bottom:20px;font-style:italic;">"Ang ganda ng website na ginawa nila para sa aming restaurant. Mobile-friendly, mabilis, at very professional ang dating. Tuloy-tuloy na ang mga orders!"</p>
+        <div style="display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid rgba(255,255,255,.07);">
+          <div class="avatar" style="background:linear-gradient(135deg,#3a6a9a,#1a3a6a);">R</div>
+          <div>
+            <div style="font-weight:600;font-size:.95rem;">Rico Dela Cruz</div>
+            <div style="font-size:.78rem;color:rgba(255,255,255,.4);">Restaurant Owner · Marikina</div>
+          </div>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="glass review-card reveal" style="transition-delay:.3s">
+        <div style="color:#c9a84c;font-size:1.1rem;margin-bottom:16px;letter-spacing:2px;">★★★★★</div>
+        <p style="color:rgba(255,255,255,.7);font-size:.92rem;line-height:1.75;margin-bottom:20px;font-style:italic;">"I was skeptical at first but they delivered beyond expectations. Our online inquiries tripled within the first month. Best investment I've made for my small business!"</p>
+        <div style="display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid rgba(255,255,255,.07);">
+          <div class="avatar" style="background:linear-gradient(135deg,#6a3a9a,#3a1a6a);">A</div>
+          <div>
+            <div style="font-weight:600;font-size:.95rem;">Ana Reyes</div>
+            <div style="font-size:.78rem;color:rgba(255,255,255,.4);">Local Business Owner · Pasig</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- CTA below reviews -->
+    <div class="text-center mt-14 reveal">
+      <p style="color:rgba(255,255,255,.5);margin-bottom:24px;font-size:.95rem;">Ready to join our growing list of happy clients?</p>
+      <div class="pulse-btn" style="display:inline-block;">
+        <a href="tel:09000000000">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Call Us Today
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ CONTACT FOOTER ════════════════════ -->
+<footer id="contact" style="padding:80px 0 40px;border-top:1px solid rgba(201,168,76,.12);">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="grid md:grid-cols-3 gap-12 mb-16">
+      <!-- Brand -->
+      <div class="reveal">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+          <div style="width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#c9a84c,#6a4a10);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.1rem;color:#fff;">YB</div>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;">Your Business Name Here</span>
+        </div>
+        <p style="color:rgba(255,255,255,.4);font-size:.88rem;line-height:1.7;margin-bottom:20px;">Professional websites for Philippine businesses. Fast. Beautiful. Affordable.</p>
+        <div style="display:flex;gap:10px;">
+          <!-- Facebook -->
+          <a href="#" class="social-btn" title="Facebook">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <!-- Instagram -->
+          <a href="#" class="social-btn" title="Instagram">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <!-- TikTok -->
+          <a href="#" class="social-btn" title="TikTok">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.9a8.19 8.19 0 004.79 1.52V7a4.85 4.85 0 01-1.02-.31z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Find Us -->
+      <div class="reveal" style="transition-delay:.1s">
+        <h3 style="font-size:1rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:16px;">Find Us</h3>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;align-items:flex-start;gap:10px;color:rgba(255,255,255,.6);font-size:.9rem;">
+            <span style="margin-top:2px;color:var(--gold);">📍</span>
+            <span>123 Street, Your City<br/>Philippines</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.6);font-size:.9rem;">
+            <span style="color:var(--gold);">📞</span>
+            <a href="tel:09000000000" style="color:inherit;text-decoration:none;">0900 000 0000</a>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.6);font-size:.9rem;">
+            <span style="color:var(--gold);">✉️</span>
+            <a href="mailto:hello@yourbusiness.ph" style="color:inherit;text-decoration:none;">hello@yourbusiness.ph</a>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.6);font-size:.9rem;">
+            <span style="color:var(--gold);">🕐</span>
+            <span>Mon–Sat · 8AM–6PM</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Map placeholder -->
+      <div class="reveal" style="transition-delay:.2s">
+        <h3 style="font-size:1rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:16px;">Map</h3>
+        <div class="glass rounded-2xl overflow-hidden" style="height:160px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;border:1px dashed rgba(201,168,76,.3);">
+          <span style="font-size:2rem;">🗺️</span>
+          <span style="font-size:.8rem;color:rgba(255,255,255,.35);">123 Street, Your City</span>
+          <a href="https://maps.google.com" target="_blank" style="font-size:.78rem;color:var(--gold);text-decoration:none;letter-spacing:.06em;">Open in Google Maps ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div style="padding-top:28px;border-top:1px solid rgba(255,255,255,.06);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;">
+      <p style="font-size:.8rem;color:rgba(255,255,255,.25);">© 2025 Your Business Name Here. All rights reserved.</p>
+      <p style="font-size:.8rem;color:rgba(255,255,255,.18);">Built with ❤️ for Philippine Businesses</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── Carousel ──
+let current = 0;
+const track = document.getElementById('track');
+const dots = document.querySelectorAll('.dot');
+const total = 3;
+
+function goTo(n) {
+  current = (n + total) % total;
+  track.style.transform = `translateX(-${current * 100}%)`;
+  dots.forEach((d, i) => d.classList.toggle('active', i === current));
+}
+function slide(dir) { goTo(current + dir); }
+
+// Auto-advance
+setInterval(() => slide(1), 5000);
+
+// ── Scroll reveal ──
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+reveals.forEach(el => io.observe(el));
+
+// ── Navbar scroll tint ──
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').style.background =
+    window.scrollY > 40 ? 'rgba(8,12,20,0.92)' : 'rgba(8,12,20,0.70)';
+});
+</script>
+</body>
+</html>
