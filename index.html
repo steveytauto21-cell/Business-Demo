@@ -1,561 +1,556 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Your Business Name Here – Professional Websites Philippines</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-<style>
-  :root {
-    --gold: #c9a84c;
-    --gold-light: #e8c97a;
-    --glass-bg: rgba(255,255,255,0.04);
-    --glass-border: rgba(255,255,255,0.10);
-    --glass-hover: rgba(255,255,255,0.08);
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: #080c14;
-    color: #fff;
-    overflow-x: hidden;
-  }
-  h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Steven Designs — Premium Web Systems for Philippine Businesses</title>
+  <meta name="description" content="Steven Designs builds custom business engines — not templates — for cafes, salons, gyms, auto shops, and restaurants across the Philippines. Zero-risk prototype. You see it before you pay." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com" defer></script>
+  <style>
+    :root {
+      --accent: #C8A96E;
+      --accent-light: #E8C98A;
+      --dark: #0E0E10;
+      --ink: #1A1A1E;
+      --muted: #6B7280;
+      --surface: #F8F7F4;
+      --glow: rgba(200,169,110,0.35);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { font-family: 'Outfit', sans-serif; }
+    body { background: var(--surface); color: var(--ink); overflow-x: hidden; }
 
-  /* ── Background mesh ── */
-  .bg-mesh {
-    position: fixed; inset: 0; z-index: 0; pointer-events: none;
-    background:
-      radial-gradient(ellipse 80% 60% at 20% 10%, rgba(201,168,76,0.13) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 50% at 80% 80%, rgba(30,60,120,0.18) 0%, transparent 60%),
-      radial-gradient(ellipse 40% 40% at 50% 50%, rgba(201,168,76,0.05) 0%, transparent 70%);
-  }
-  .grain {
-    position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: .025;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-size: 200px;
-  }
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(248,247,244,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(200,169,110,0.15); }
+    .nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.4rem; color: var(--ink); text-decoration: none; letter-spacing: -0.02em; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+    .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--muted); text-decoration: none; letter-spacing: 0.02em; position: relative; transition: color 0.3s; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 1.5px; background: var(--accent); transition: width 0.3s ease; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta { background: var(--ink); color: #fff !important; padding: 0.55rem 1.4rem; border-radius: 100px; font-size: 0.875rem !important; font-weight: 600 !important; transition: all 0.3s ease !important; }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { background: var(--accent) !important; color: var(--ink) !important; box-shadow: 0 0 20px var(--glow) !important; transform: scale(1.04); }
 
-  /* ── Glass card ── */
-  .glass {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-  }
-  .glass:hover { background: var(--glass-hover); }
+    /* HAMBURGER */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--ink); transition: all 0.3s; border-radius: 2px; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-  /* ── Gold gradient text ── */
-  .gold-text {
-    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  }
+    /* MOBILE NAV */
+    .mobile-nav { display: none; position: fixed; top: 68px; left: 0; right: 0; background: rgba(248,247,244,0.97); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(200,169,110,0.15); padding: 1.5rem 2rem; z-index: 99; flex-direction: column; gap: 1.5rem; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-size: 1rem; font-weight: 500; color: var(--ink); text-decoration: none; }
 
-  /* ── Navbar ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-    background: rgba(8,12,20,0.7);
-    border-bottom: 1px solid rgba(201,168,76,0.15);
-  }
+    /* HERO */
+    .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 68px; background: var(--surface); position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; }
+    .hero-orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.25; }
+    .hero-orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, #C8A96E, transparent); top: -150px; right: -100px; }
+    .hero-orb-2 { width: 400px; height: 400px; background: radial-gradient(circle, #6E9EC8, transparent); bottom: -100px; left: -80px; }
+    .hero-inner { max-width: 1280px; margin: 0 auto; padding: 6rem 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 1; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(200,169,110,0.12); border: 1px solid rgba(200,169,110,0.3); color: #9A7540; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.4rem 1rem; border-radius: 100px; margin-bottom: 1.5rem; }
+    .hero-title { font-family: 'DM Serif Display', serif; font-size: clamp(3rem, 5.5vw, 5.5rem); line-height: 1.05; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 1.5rem; }
+    .hero-title em { font-style: italic; color: var(--accent); }
+    .hero-subtitle { font-size: 1.125rem; line-height: 1.75; color: var(--muted); max-width: 480px; margin-bottom: 2.5rem; font-weight: 400; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--ink); color: #fff; padding: 0.875rem 2rem; border-radius: 100px; font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: all 0.3s ease; letter-spacing: 0.01em; min-height: 44px; }
+    .btn-primary:hover { background: var(--accent); color: var(--ink); box-shadow: 0 0 30px var(--glow); transform: scale(1.04) translateY(-1px); }
+    .btn-ghost { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--ink); padding: 0.875rem 2rem; border-radius: 100px; font-weight: 600; font-size: 0.9rem; text-decoration: none; border: 1.5px solid rgba(14,14,16,0.2); transition: all 0.3s ease; min-height: 44px; }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: scale(1.04) translateY(-1px); }
+    .hero-visual { position: relative; }
+    .hero-card { background: white; border-radius: 24px; padding: 2rem; box-shadow: 0 25px 80px rgba(0,0,0,0.1); position: relative; overflow: hidden; }
+    .hero-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--accent), #6E9EC8, var(--accent)); }
+    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
+    .stat-box { background: var(--surface); border-radius: 16px; padding: 1.25rem; }
+    .stat-num { font-family: 'DM Serif Display', serif; font-size: 2.25rem; color: var(--ink); letter-spacing: -0.03em; }
+    .stat-label { font-size: 0.8rem; color: var(--muted); font-weight: 500; margin-top: 0.25rem; }
+    .industry-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+    .tag { background: rgba(200,169,110,0.1); border: 1px solid rgba(200,169,110,0.25); color: #9A7540; font-size: 0.75rem; font-weight: 600; padding: 0.35rem 0.85rem; border-radius: 100px; }
+    .hero-badge { display: flex; align-items: center; gap: 0.75rem; background: var(--surface); border-radius: 12px; padding: 0.875rem 1.25rem; margin-top: 1.5rem; }
+    .badge-dot { width: 10px; height: 10px; background: #22C55E; border-radius: 50%; box-shadow: 0 0 0 3px rgba(34,197,94,0.2); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{ box-shadow: 0 0 0 3px rgba(34,197,94,0.2); } 50%{ box-shadow: 0 0 0 6px rgba(34,197,94,0.1); } }
+    .badge-text { font-size: 0.8rem; color: var(--muted); font-weight: 500; }
+    .badge-text strong { color: var(--ink); }
 
-  /* ── Navbar Book Button ── */
-  .nav-book-btn {
-    display: inline-flex; align-items: center; gap: 7px;
-    padding: 9px 20px; border-radius: 9999px;
-    background: linear-gradient(135deg, var(--gold), #a07830, var(--gold-light));
-    font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: .85rem;
-    color: #080c14; text-decoration: none; letter-spacing: .03em;
-    box-shadow: 0 4px 16px rgba(201,168,76,0.30);
-    transition: transform .2s, box-shadow .2s;
-  }
-  .nav-book-btn:hover { transform: scale(1.04); box-shadow: 0 6px 24px rgba(201,168,76,0.45); }
+    /* MARQUEE */
+    .marquee-section { background: var(--ink); padding: 1.25rem 0; overflow: hidden; }
+    .marquee-track { display: flex; gap: 3rem; white-space: nowrap; animation: marquee 20s linear infinite; }
+    .marquee-item { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.35); display: flex; align-items: center; gap: 1rem; flex-shrink: 0; }
+    .marquee-dot { width: 4px; height: 4px; background: var(--accent); border-radius: 50%; }
+    @keyframes marquee { from{ transform: translateX(0); } to{ transform: translateX(-50%); } }
 
-  /* ── Hero ── */
-  #hero {
-    min-height: 100vh;
-    display: flex; align-items: center; justify-content: center;
-    position: relative; overflow: hidden;
-  }
-  .hero-orb {
-    position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none;
-  }
-  .hero-orb-1 { width: 600px; height: 600px; background: rgba(201,168,76,0.08); top: -100px; left: -150px; }
-  .hero-orb-2 { width: 400px; height: 400px; background: rgba(30,80,200,0.10); bottom: 0; right: -100px; }
+    /* SECTION COMMONS */
+    section { padding: 7rem 0; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+    .section-eyebrow { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+    .section-title { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.1; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 1.25rem; }
+    .section-sub { font-size: 1.05rem; color: var(--muted); line-height: 1.75; max-width: 560px; }
 
-  /* ── Pulse button ── */
-  @keyframes pulse-ring {
-    0%   { transform: scale(1);   opacity: .7; }
-    100% { transform: scale(1.55); opacity: 0; }
-  }
-  .pulse-btn { position: relative; display: inline-block; }
-  .pulse-btn::before, .pulse-btn::after {
-    content: ''; position: absolute; inset: 0; border-radius: 9999px;
-    background: var(--gold); animation: pulse-ring 2s ease-out infinite;
-  }
-  .pulse-btn::after { animation-delay: .9s; }
-  .pulse-btn a {
-    position: relative; z-index: 1;
-    display: inline-flex; align-items: center; gap: 10px;
-    padding: 18px 44px; border-radius: 9999px;
-    background: linear-gradient(135deg, var(--gold), #a07830, var(--gold-light));
-    font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 1.1rem;
-    color: #080c14; text-decoration: none; letter-spacing: .03em;
-    box-shadow: 0 8px 32px rgba(201,168,76,0.35);
-    transition: transform .2s, box-shadow .2s;
-  }
-  .pulse-btn a:hover { transform: scale(1.04); box-shadow: 0 12px 40px rgba(201,168,76,0.5); }
+    /* INDUSTRIES (BENTO) */
+    .bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: auto auto; gap: 1.25rem; margin-top: 4rem; }
+    .bento-card { border-radius: 24px; padding: 2.5rem; position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: default; }
+    .bento-card:hover { transform: translateY(-4px); box-shadow: 0 30px 80px rgba(0,0,0,0.12); }
+    .bento-card.tall { grid-row: span 2; }
+    .bento-card.wide { grid-column: span 2; }
+    .bento-dark { background: var(--ink); color: white; }
+    .bento-gold { background: linear-gradient(135deg, #C8A96E 0%, #A07840 100%); color: white; }
+    .bento-light { background: white; }
+    .bento-muted { background: #F0EDE8; }
+    .bento-icon { font-size: 2.5rem; margin-bottom: 1.5rem; }
+    .bento-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.6; margin-bottom: 0.5rem; }
+    .bento-name { font-family: 'DM Serif Display', serif; font-size: 1.75rem; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+    .bento-desc { font-size: 0.9rem; line-height: 1.65; opacity: 0.7; }
+    .bento-tag { display: inline-block; background: rgba(255,255,255,0.15); border-radius: 100px; padding: 0.3rem 0.85rem; font-size: 0.72rem; font-weight: 600; margin-top: 1.25rem; }
+    .bento-dark .bento-tag { background: rgba(200,169,110,0.25); color: var(--accent-light); }
+    .bento-gold .bento-tag { background: rgba(255,255,255,0.2); }
+    .bento-light .bento-label, .bento-muted .bento-label { color: var(--muted); }
+    .bento-light .bento-name, .bento-muted .bento-name { color: var(--ink); }
+    .bento-light .bento-desc, .bento-muted .bento-desc { color: var(--muted); }
+    .bento-light .bento-tag, .bento-muted .bento-tag { background: rgba(14,14,16,0.07); color: var(--ink); }
 
-  /* ── Secondary outline button ── */
-  .outline-btn {
-    display: inline-flex; align-items: center; gap: 10px;
-    padding: 16px 36px; border-radius: 9999px;
-    border: 1px solid rgba(201,168,76,0.5);
-    background: rgba(201,168,76,0.07);
-    font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 1rem;
-    color: var(--gold-light); text-decoration: none; letter-spacing: .03em;
-    transition: background .2s, border-color .2s, transform .2s;
-  }
-  .outline-btn:hover { background: rgba(201,168,76,0.14); border-color: var(--gold); transform: scale(1.03); }
+    /* PROCESS */
+    .process-section { background: var(--ink); }
+    .process-section .section-eyebrow { color: var(--accent); }
+    .process-section .section-title { color: white; }
+    .process-section .section-sub { color: rgba(255,255,255,0.5); }
+    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 4rem; }
+    .process-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 2rem; position: relative; transition: all 0.3s ease; }
+    .process-card:hover { background: rgba(200,169,110,0.08); border-color: rgba(200,169,110,0.25); transform: translateY(-3px); }
+    .process-num { font-family: 'DM Serif Display', serif; font-size: 3.5rem; color: rgba(200,169,110,0.2); line-height: 1; margin-bottom: 1rem; letter-spacing: -0.04em; }
+    .process-title { font-weight: 700; font-size: 1.05rem; color: white; margin-bottom: 0.6rem; }
+    .process-desc { font-size: 0.875rem; line-height: 1.65; color: rgba(255,255,255,0.45); }
+    .process-connector { display: none; }
 
-  /* ── Badge ── */
-  .badge {
-    display: inline-flex; align-items: center; gap: 6px;
-    padding: 6px 16px; border-radius: 9999px;
-    border: 1px solid rgba(201,168,76,0.35);
-    background: rgba(201,168,76,0.07);
-    font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-light);
-  }
+    /* ZERO RISK */
+    .zerorisk { background: linear-gradient(135deg, #1A1A1E 0%, #0E0E10 100%); position: relative; overflow: hidden; }
+    .zerorisk::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 800px; height: 800px; background: radial-gradient(circle, rgba(200,169,110,0.08) 0%, transparent 60%); border-radius: 50%; }
+    .zerorisk-inner { text-align: center; position: relative; z-index: 1; }
+    .zerorisk .section-title { color: white; max-width: 700px; margin: 0 auto 1.25rem; }
+    .zerorisk .section-sub { max-width: 520px; margin: 0 auto 3rem; color: rgba(255,255,255,0.5); }
+    .zerorisk-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3.5rem; text-align: left; }
+    .zr-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 2rem; transition: all 0.3s ease; }
+    .zr-card:hover { border-color: rgba(200,169,110,0.3); background: rgba(200,169,110,0.05); transform: translateY(-3px); }
+    .zr-icon { width: 48px; height: 48px; background: rgba(200,169,110,0.12); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; font-size: 1.3rem; }
+    .zr-title { font-weight: 700; font-size: 1rem; color: white; margin-bottom: 0.5rem; }
+    .zr-desc { font-size: 0.875rem; line-height: 1.65; color: rgba(255,255,255,0.45); }
 
-  /* ── Divider ── */
-  .gold-line {
-    width: 60px; height: 2px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    margin: 0 auto;
-  }
+    /* SOCIAL PROOF */
+    .testimonials { background: white; }
+    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 4rem; }
+    .testi-card { background: var(--surface); border-radius: 20px; padding: 2rem; position: relative; transition: transform 0.3s ease; }
+    .testi-card:hover { transform: translateY(-3px); }
+    .testi-stars { color: var(--accent); font-size: 0.875rem; letter-spacing: 0.05em; margin-bottom: 1.25rem; }
+    .testi-quote { font-size: 0.95rem; line-height: 1.75; color: var(--ink); margin-bottom: 1.5rem; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: 0.75rem; }
+    .testi-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), #6E9EC8); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.875rem; color: white; flex-shrink: 0; }
+    .testi-name { font-weight: 700; font-size: 0.875rem; color: var(--ink); }
+    .testi-biz { font-size: 0.75rem; color: var(--muted); }
 
-  /* ── Carousel ── */
-  .carousel-wrap { position: relative; overflow: hidden; border-radius: 20px; }
-  .carousel-track { display: flex; transition: transform .6s cubic-bezier(.77,0,.175,1); }
-  .carousel-slide { min-width: 100%; position: relative; }
-  .carousel-slide img { width: 100%; height: 480px; object-fit: cover; display: block; }
-  .slide-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(8,12,20,.75) 0%, transparent 60%);
-  }
-  .slide-caption {
-    position: absolute; bottom: 32px; left: 32px;
-    font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300;
-    color: rgba(255,255,255,0.9);
-  }
-  .carousel-btn {
-    position: absolute; top: 50%; transform: translateY(-50%);
-    width: 48px; height: 48px; border-radius: 50%;
-    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
-    backdrop-filter: blur(10px); cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    color: #fff; font-size: 1.2rem; transition: background .2s;
-    z-index: 10;
-  }
-  .carousel-btn:hover { background: rgba(201,168,76,0.25); border-color: var(--gold); }
-  .carousel-btn.prev { left: 16px; }
-  .carousel-btn.next { right: 16px; }
-  .carousel-dots { display: flex; gap: 8px; justify-content: center; margin-top: 16px; }
-  .dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: rgba(255,255,255,0.2); cursor: pointer; transition: all .3s;
-  }
-  .dot.active { background: var(--gold); width: 24px; border-radius: 4px; }
+    /* FOOTER */
+    footer { background: var(--ink); padding: 5rem 0 2.5rem; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
+    .footer-brand { font-family: 'DM Serif Display', serif; font-size: 1.6rem; color: white; margin-bottom: 1rem; letter-spacing: -0.02em; }
+    .footer-brand span { color: var(--accent); }
+    .footer-desc { font-size: 0.875rem; line-height: 1.75; color: rgba(255,255,255,0.4); max-width: 280px; }
+    .footer-contact { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-contact a { font-size: 0.875rem; color: rgba(255,255,255,0.5); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; transition: color 0.3s; }
+    .footer-contact a:hover { color: var(--accent); }
+    .footer-col-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 1.25rem; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+    .footer-links a { font-size: 0.875rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.3s; }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .footer-copy { font-size: 0.8rem; color: rgba(255,255,255,0.25); }
+    .footer-made { font-size: 0.8rem; color: rgba(255,255,255,0.25); }
 
-  /* ── Review cards ── */
-  .review-card {
-    padding: 32px; border-radius: 20px; transition: transform .3s;
-  }
-  .review-card:hover { transform: translateY(-6px); }
-  .avatar {
-    width: 52px; height: 52px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--gold), #6a4a10);
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 700; font-size: 1.1rem; color: #080c14; flex-shrink: 0;
-  }
+    /* FLOATING CTA */
+    .float-cta { position: fixed; bottom: 2rem; right: 2rem; z-index: 90; display: flex; flex-direction: column; gap: 0.75rem; align-items: flex-end; }
+    .float-btn { display: flex; align-items: center; gap: 0.6rem; background: var(--ink); color: white; padding: 0.75rem 1.25rem; border-radius: 100px; font-size: 0.825rem; font-weight: 600; text-decoration: none; box-shadow: 0 8px 32px rgba(0,0,0,0.25); transition: all 0.3s ease; min-height: 44px; }
+    .float-btn:hover { background: var(--accent); color: var(--ink); transform: scale(1.05) translateX(-3px); box-shadow: 0 12px 40px var(--glow); }
+    .float-btn.phone { background: #22C55E; }
+    .float-btn.phone:hover { background: #16A34A; }
 
-  /* ── Stats strip ── */
-  .stat-num {
-    font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 700;
-    line-height: 1;
-  }
+    /* FADE IN */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-  /* ── Features ── */
-  .feature-icon {
-    width: 52px; height: 52px; border-radius: 14px;
-    background: rgba(201,168,76,0.10); border: 1px solid rgba(201,168,76,0.20);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.4rem; flex-shrink: 0;
-  }
-
-  /* ── Social links ── */
-  .social-btn {
-    width: 44px; height: 44px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    border: 1px solid var(--glass-border); background: var(--glass-bg);
-    transition: all .25s; text-decoration: none; color: #fff; font-size: 1rem;
-  }
-  .social-btn:hover { background: rgba(201,168,76,0.15); border-color: var(--gold); color: var(--gold); }
-
-  /* ── Scroll reveal ── */
-  .reveal { opacity: 0; transform: translateY(32px); transition: opacity .7s ease, transform .7s ease; }
-  .reveal.visible { opacity: 1; transform: none; }
-
-  /* ── Section spacing ── */
-  section { position: relative; z-index: 1; }
-</style>
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .bento-grid { grid-template-columns: 1fr 1fr; }
+      .bento-card.tall { grid-row: span 1; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      .zerorisk-cards { grid-template-columns: 1fr 1fr; }
+      .testi-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero-inner { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 2rem; }
+      .hero-visual { display: none; }
+      .bento-grid { grid-template-columns: 1fr; }
+      .bento-card.wide { grid-column: span 1; }
+      .process-grid { grid-template-columns: 1fr; }
+      .zerorisk-cards { grid-template-columns: 1fr; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+      .float-cta { bottom: 1.25rem; right: 1.25rem; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- Background -->
-<div class="bg-mesh"></div>
-<div class="grain"></div>
+<!-- FLOATING CTA -->
+<div class="float-cta">
+  <a href="tel:09623797660" class="float-btn phone" aria-label="Call Steven Designs">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    0962-379-7660
+  </a>
+  <a href="mailto:steven.designs21@gmail.com" class="float-btn" aria-label="Email Steven Designs">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    Email Us
+  </a>
+</div>
 
-<!-- ════════════════════ NAVBAR ════════════════════ -->
+<!-- NAV -->
 <nav>
-  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-    <div class="flex items-center gap-3">
-      <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#c9a84c,#6a4a10);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1rem;color:#fff;">YB</div>
-      <span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;letter-spacing:.04em;">Your Business Name Here</span>
-    </div>
-    <div class="hidden md:flex items-center gap-8">
-      <a href="#services" class="text-sm text-white/60 hover:text-white transition-colors">Services</a>
-      <a href="#gallery" class="text-sm text-white/60 hover:text-white transition-colors">Gallery</a>
-      <a href="#reviews" class="text-sm text-white/60 hover:text-white transition-colors">Reviews</a>
-      <a href="tel:09000000000" class="text-sm px-4 py-2 rounded-full border transition-all" style="border-color:rgba(201,168,76,.4);color:var(--gold);background:rgba(201,168,76,.07);">📞 Call Us</a>
-      <!-- ★ BOOK BUTTON — NAVBAR -->
-      <a href="https://calendar.app.google/TfVGD1RdJstadwG19" target="_blank" class="nav-book-btn">
-        📅 Book Right Now
-      </a>
-    </div>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Steven<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html" class="nav-cta">Start Project</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
-<!-- ════════════════════ HERO ════════════════════ -->
-<section id="hero">
-  <div class="hero-orb hero-orb-1"></div>
-  <div class="hero-orb hero-orb-2"></div>
-  <div class="max-w-4xl mx-auto px-6 text-center pt-24">
-    <div class="badge mb-8 reveal">⭐ Trusted by Local Businesses Across the Philippines</div>
-    <h1 class="reveal" style="font-size:clamp(2.8rem,7vw,5rem);font-weight:700;line-height:1.1;letter-spacing:-.01em;margin-bottom:28px;">
-      Grow Your Business<br/>
-      <span class="gold-text">with a Professional</span><br/>
-      Website.
-    </h1>
-    <p class="reveal" style="font-size:1.15rem;color:rgba(255,255,255,0.58);max-width:560px;margin:0 auto 48px;line-height:1.7;font-weight:300;">
-      Lightning-fast, mobile-optimized websites designed to convert visitors into paying customers — built specifically for Filipino businesses.
-    </p>
-    <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 flex-wrap">
-      <!-- ★ BOOK BUTTON — HERO (primary pulse CTA) -->
-      <div class="pulse-btn">
-        <a href="https://calendar.app.google/TfVGD1RdJstadwG19" target="_blank">
-          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Book Right Now
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="services.html">Services</a>
+  <a href="contact.html" style="color: var(--accent); font-weight: 700;">→ Start Project</a>
+</div>
+
+<!-- HERO -->
+<main>
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+    </div>
+    <div class="hero-inner">
+      <div class="fade-in">
+        <div class="hero-eyebrow">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="6"/></svg>
+          National Scale · Philippine Business Specialist
+        </div>
+        <h1 class="hero-title">
+          Your Business<br>Deserves a<br><em>Real Engine</em>
+        </h1>
+        <p class="hero-subtitle">
+          We build custom web systems for cafes, salons, gyms, auto shops, and restaurants across the Philippines — not templates. You see it fully built before you pay a single peso.
+        </p>
+        <div class="hero-actions">
+          <a href="contact.html" class="btn-primary">
+            Get Free Prototype
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="services.html" class="btn-ghost">View Our Work</a>
+        </div>
+      </div>
+      <div class="hero-visual fade-in" style="transition-delay: 0.15s;">
+        <div class="hero-card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;">
+            <div>
+              <div style="font-size:0.75rem;font-weight:600;color:var(--muted);letter-spacing:0.05em;text-transform:uppercase;">Project Dashboard</div>
+              <div style="font-family:'DM Serif Display',serif;font-size:1.25rem;color:var(--ink);margin-top:0.2rem;">Active Sites</div>
+            </div>
+            <div style="background:var(--surface);border-radius:12px;padding:0.5rem 0.875rem;font-size:0.75rem;font-weight:700;color:#22C55E;">LIVE ●</div>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-box">
+              <div class="stat-num">47+</div>
+              <div class="stat-label">Sites Launched</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-num">₱0</div>
+              <div class="stat-label">Risk Upfront</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-num">5★</div>
+              <div class="stat-label">Avg. Rating</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-num">72h</div>
+              <div class="stat-label">Prototype Time</div>
+            </div>
+          </div>
+          <div class="industry-tags">
+            <span class="tag">🍵 Cafe</span>
+            <span class="tag">💇 Salon</span>
+            <span class="tag">🏋️ Gym</span>
+            <span class="tag">🔧 Auto</span>
+            <span class="tag">🍽️ Restaurant</span>
+          </div>
+          <div class="hero-badge">
+            <div class="badge-dot"></div>
+            <div class="badge-text"><strong>Zero-Risk Guarantee:</strong> See your site live before paying.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <span class="marquee-item">Cafe &amp; Coffee Shop <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Hair Salon &amp; Spa <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Gym &amp; Fitness <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Auto Repair &amp; Detailing <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Restaurant &amp; Food Stall <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Retail &amp; E-Commerce <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Lead Generation <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Online Booking <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Cafe &amp; Coffee Shop <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Hair Salon &amp; Spa <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Gym &amp; Fitness <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Auto Repair &amp; Detailing <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Restaurant &amp; Food Stall <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Retail &amp; E-Commerce <span class="marquee-dot"></span></span>
+    </div>
+  </div>
+
+  <!-- INDUSTRIES -->
+  <section id="industries">
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-eyebrow">Industries We Dominate</div>
+        <h2 class="section-title">Built for Every<br>Philippine Business</h2>
+        <p class="section-sub">Five industries. One standard: relentless quality and conversion-first design that makes your business the obvious choice.</p>
+      </div>
+      <div class="bento-grid fade-in" style="transition-delay:0.1s;">
+        <div class="bento-card bento-dark tall">
+          <div class="bento-icon">🍵</div>
+          <div class="bento-label">Industry 01</div>
+          <div class="bento-name">Cafe &amp; Coffee Shop</div>
+          <div class="bento-desc">Ambiance-first websites that drive foot traffic, showcase your menu, and take online orders. Make customers feel the warmth before they walk in.</div>
+          <span class="bento-tag">Menu · Booking · Orders</span>
+        </div>
+        <div class="bento-card bento-light">
+          <div class="bento-icon">💇</div>
+          <div class="bento-label">Industry 02</div>
+          <div class="bento-name">Salon &amp; Spa</div>
+          <div class="bento-desc">Luxury-coded sites with integrated booking calendars that fill your appointment slots automatically.</div>
+          <span class="bento-tag">Booking · Gallery · Pricing</span>
+        </div>
+        <div class="bento-card bento-muted">
+          <div class="bento-icon">🏋️</div>
+          <div class="bento-label">Industry 03</div>
+          <div class="bento-name">Gym &amp; Fitness</div>
+          <div class="bento-desc">High-energy, conversion-optimized pages that capture leads and sell memberships while you sleep.</div>
+          <span class="bento-tag">Lead Gen · Schedule · Promos</span>
+        </div>
+        <div class="bento-card bento-gold wide">
+          <div class="bento-icon">🔧</div>
+          <div class="bento-label">Industry 04</div>
+          <div class="bento-name">Auto Repair &amp; Detailing</div>
+          <div class="bento-desc">Trust-first web systems that showcase your services, display real reviews, and route phone calls directly from your site. Make every local search end at your shop.</div>
+          <span class="bento-tag">Leads · Maps · Reviews · Click-to-Call</span>
+        </div>
+        <div class="bento-card bento-light wide">
+          <div class="bento-icon">🍽️</div>
+          <div class="bento-label">Industry 05</div>
+          <div class="bento-name">Restaurant &amp; Food &amp; Bev</div>
+          <div class="bento-desc">From tapsilogan to fine dining — we build food sites with mouth-watering menus, reservation systems, and delivery integrations that increase your average check.</div>
+          <span class="bento-tag">Menu · Reservations · Delivery</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process-section">
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-eyebrow">Our Process</div>
+        <h2 class="section-title" style="color:white;">From Zero to Live<br>in 5 Steps</h2>
+        <p class="section-sub">A proven system that removes all the risk from your side — you only decide when you're 100% satisfied.</p>
+      </div>
+      <div class="process-grid fade-in" style="transition-delay:0.1s;">
+        <div class="process-card">
+          <div class="process-num">01</div>
+          <div class="process-title">Discovery Call</div>
+          <div class="process-desc">We learn your business, your customers, and your goals in a free 20-minute call. No pressure, no pitch.</div>
+        </div>
+        <div class="process-card">
+          <div class="process-num">02</div>
+          <div class="process-title">Free Prototype</div>
+          <div class="process-desc">We build your full website — real design, real content, real pages — completely free. You see everything before committing.</div>
+        </div>
+        <div class="process-card">
+          <div class="process-num">03</div>
+          <div class="process-title">Revisions</div>
+          <div class="process-desc">Love 90% but want changes? We revise until it's perfect. Your approval drives every decision.</div>
+        </div>
+        <div class="process-card">
+          <div class="process-num">04</div>
+          <div class="process-title">Launch &amp; Grow</div>
+          <div class="process-desc">Once you're satisfied, we launch your live domain, connect your analytics, and hand over everything you need.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZERO RISK -->
+  <section class="zerorisk">
+    <div class="container">
+      <div class="zerorisk-inner fade-in">
+        <div class="section-eyebrow">The Steven Designs Guarantee</div>
+        <h2 class="section-title">You Never Pay<br>for Something You<br>Don't Love</h2>
+        <p class="section-sub">Every project begins with a complete, production-ready prototype — built before you invest a single peso. That's our promise.</p>
+        <a href="contact.html" class="btn-primary" style="display:inline-flex;">
+          Claim Your Free Prototype
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
       </div>
-      <!-- Call Us — secondary -->
-      <a href="tel:09000000000" class="outline-btn">
-        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        Call Us Today
-      </a>
-      <a href="#gallery" style="color:rgba(255,255,255,.55);font-size:.9rem;text-decoration:none;display:flex;align-items:center;gap:6px;">
-        See Our Work
-        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-    </div>
-    <!-- Trust badges -->
-    <div class="reveal flex flex-wrap justify-center gap-4">
-      <div class="glass rounded-2xl px-5 py-3 flex items-center gap-3">
-        <span style="font-size:1.4rem;">⚡</span>
-        <div class="text-left"><div style="font-size:.75rem;color:rgba(255,255,255,.45);letter-spacing:.08em;">LOAD TIME</div><div style="font-size:.9rem;font-weight:500;">Under 2 Seconds</div></div>
-      </div>
-      <div class="glass rounded-2xl px-5 py-3 flex items-center gap-3">
-        <span style="font-size:1.4rem;">📱</span>
-        <div class="text-left"><div style="font-size:.75rem;color:rgba(255,255,255,.45);letter-spacing:.08em;">OPTIMIZED</div><div style="font-size:.9rem;font-weight:500;">Mobile-First Design</div></div>
-      </div>
-      <div class="glass rounded-2xl px-5 py-3 flex items-center gap-3">
-        <span style="font-size:1.4rem;">🇵🇭</span>
-        <div class="text-left"><div style="font-size:.75rem;color:rgba(255,255,255,.45);letter-spacing:.08em;">BASED IN</div><div style="font-size:.9rem;font-weight:500;">Philippines</div></div>
-      </div>
-    </div>
-  </div>
-  <!-- Scroll indicator -->
-  <div style="position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,.25);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;">
-    <span>Scroll</span>
-    <div style="width:1px;height:40px;background:linear-gradient(to bottom,rgba(201,168,76,.5),transparent);"></div>
-  </div>
-</section>
-
-<!-- ════════════════════ STATS ════════════════════ -->
-<section style="padding:80px 0;">
-  <div class="max-w-5xl mx-auto px-6">
-    <div class="glass rounded-3xl p-8 grid grid-cols-2 md:grid-cols-4 gap-8 reveal">
-      <div class="text-center">
-        <div class="stat-num gold-text">50+</div>
-        <div style="font-size:.8rem;color:rgba(255,255,255,.45);margin-top:4px;letter-spacing:.06em;text-transform:uppercase;">Clients Served</div>
-      </div>
-      <div class="text-center">
-        <div class="stat-num gold-text">3-5</div>
-        <div style="font-size:.8rem;color:rgba(255,255,255,.45);margin-top:4px;letter-spacing:.06em;text-transform:uppercase;">Day Delivery</div>
-      </div>
-      <div class="text-center">
-        <div class="stat-num gold-text">100%</div>
-        <div style="font-size:.8rem;color:rgba(255,255,255,.45);margin-top:4px;letter-spacing:.06em;text-transform:uppercase;">Mobile Ready</div>
-      </div>
-      <div class="text-center">
-        <div class="stat-num gold-text">5★</div>
-        <div style="font-size:.8rem;color:rgba(255,255,255,.45);margin-top:4px;letter-spacing:.06em;text-transform:uppercase;">Avg. Rating</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════ SERVICES ════════════════════ -->
-<section id="services" style="padding:80px 0;">
-  <div class="max-w-5xl mx-auto px-6">
-    <div class="text-center mb-16 reveal">
-      <div class="badge mb-5">What We Offer</div>
-      <h2 style="font-size:clamp(2rem,5vw,3rem);font-weight:700;margin-bottom:16px;">Everything Your Business<br/><span class="gold-text">Needs to Succeed Online</span></h2>
-      <div class="gold-line mt-6"></div>
-    </div>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="glass rounded-2xl p-7 reveal">
-        <div class="feature-icon mb-5">🎨</div>
-        <h3 style="font-size:1.3rem;font-weight:600;margin-bottom:10px;">Custom Design</h3>
-        <p style="color:rgba(255,255,255,.5);font-size:.9rem;line-height:1.7;">Unique, branded websites tailored to your industry — no generic templates. Built to make your business stand out.</p>
-      </div>
-      <div class="glass rounded-2xl p-7 reveal" style="transition-delay:.1s">
-        <div class="feature-icon mb-5">⚡</div>
-        <h3 style="font-size:1.3rem;font-weight:600;margin-bottom:10px;">Speed Optimized</h3>
-        <p style="color:rgba(255,255,255,.5);font-size:.9rem;line-height:1.7;">Fast-loading pages keep customers engaged. Slow websites lose sales — ours won't.</p>
-      </div>
-      <div class="glass rounded-2xl p-7 reveal" style="transition-delay:.2s">
-        <div class="feature-icon mb-5">📈</div>
-        <h3 style="font-size:1.3rem;font-weight:600;margin-bottom:10px;">Built to Convert</h3>
-        <p style="color:rgba(255,255,255,.5);font-size:.9rem;line-height:1.7;">Strategic layouts with clear calls-to-action that turn visitors into leads and customers into loyal clients.</p>
-      </div>
-      <div class="glass rounded-2xl p-7 reveal" style="transition-delay:.3s">
-        <div class="feature-icon mb-5">🔍</div>
-        <h3 style="font-size:1.3rem;font-weight:600;margin-bottom:10px;">SEO Ready</h3>
-        <p style="color:rgba(255,255,255,.5);font-size:.9rem;line-height:1.7;">Be found on Google. Every site we build follows SEO best practices so customers find you first.</p>
-      </div>
-      <div class="glass rounded-2xl p-7 reveal" style="transition-delay:.4s">
-        <div class="feature-icon mb-5">📱</div>
-        <h3 style="font-size:1.3rem;font-weight:600;margin-bottom:10px;">Mobile First</h3>
-        <p style="color:rgba(255,255,255,.5);font-size:.9rem;line-height:1.7;">Over 90% of Filipinos browse on their phones. Your site will look perfect on every screen size.</p>
-      </div>
-      <div class="glass rounded-2xl p-7 reveal" style="transition-delay:.5s">
-        <div class="feature-icon mb-5">🤝</div>
-        <h3 style="font-size:1.3rem;font-weight:600;margin-bottom:10px;">Local Support</h3>
-        <p style="color:rgba(255,255,255,.5);font-size:.9rem;line-height:1.7;">Talk to a real person who understands the Philippine market. No bots, no overseas handoffs.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════ GALLERY / CAROUSEL ════════════════════ -->
-<section id="gallery" style="padding:80px 0;">
-  <div class="max-w-5xl mx-auto px-6">
-    <div class="text-center mb-12 reveal">
-      <div class="badge mb-5">Our Portfolio</div>
-      <h2 style="font-size:clamp(2rem,5vw,3rem);font-weight:700;margin-bottom:8px;">Built for Businesses<br/><span class="gold-text">Like Yours</span></h2>
-      <div class="gold-line mt-6"></div>
-    </div>
-    <div class="carousel-wrap reveal">
-      <div class="carousel-track" id="track">
-        <div class="carousel-slide">
-          <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1200&q=80&auto=format&fit=crop" alt="Modern Architecture"/>
-          <div class="slide-overlay"></div>
-          <div class="slide-caption">Modern Commercial Space — Makati</div>
+      <div class="zerorisk-cards fade-in" style="transition-delay:0.1s;">
+        <div class="zr-card">
+          <div class="zr-icon">🛡️</div>
+          <div class="zr-title">Zero Upfront Cost</div>
+          <div class="zr-desc">We build first, bill after approval. Your business faces zero financial risk during the prototype phase.</div>
         </div>
-        <div class="carousel-slide">
-          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80&auto=format&fit=crop" alt="Business Interior"/>
-          <div class="slide-overlay"></div>
-          <div class="slide-caption">Premium Business Interior — BGC</div>
+        <div class="zr-card">
+          <div class="zr-icon">⚡</div>
+          <div class="zr-title">72-Hour Delivery</div>
+          <div class="zr-desc">See a fully functional prototype within 3 business days. No waiting months for a "coming soon" page.</div>
         </div>
-        <div class="carousel-slide">
-          <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?w=1200&q=80&auto=format&fit=crop" alt="Retail Store"/>
-          <div class="slide-overlay"></div>
-          <div class="slide-caption">Retail & Café Concept — QC</div>
+        <div class="zr-card">
+          <div class="zr-icon">🔁</div>
+          <div class="zr-title">Unlimited Revisions</div>
+          <div class="zr-desc">We revise until you love every pixel. No limit on feedback rounds during the prototype phase.</div>
         </div>
       </div>
-      <button class="carousel-btn prev" onclick="slide(-1)">&#8592;</button>
-      <button class="carousel-btn next" onclick="slide(1)">&#8594;</button>
     </div>
-    <div class="carousel-dots" id="dots">
-      <div class="dot active" onclick="goTo(0)"></div>
-      <div class="dot" onclick="goTo(1)"></div>
-      <div class="dot" onclick="goTo(2)"></div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- ════════════════════ REVIEWS ════════════════════ -->
-<section id="reviews" style="padding:80px 0;">
-  <div class="max-w-5xl mx-auto px-6">
-    <div class="text-center mb-14 reveal">
-      <div class="badge mb-5">Client Reviews</div>
-      <h2 style="font-size:clamp(2rem,5vw,3rem);font-weight:700;margin-bottom:8px;">What Our Clients<br/><span class="gold-text">Are Saying</span></h2>
-      <div class="gold-line mt-6"></div>
-    </div>
-    <div class="grid md:grid-cols-3 gap-6">
-      <!-- Card 1 -->
-      <div class="glass review-card reveal">
-        <div style="color:#c9a84c;font-size:1.1rem;margin-bottom:16px;letter-spacing:2px;">★★★★★</div>
-        <p style="color:rgba(255,255,255,.7);font-size:.92rem;line-height:1.75;margin-bottom:20px;font-style:italic;">"Grabe yung improvement ng aming business! Maraming customers na ang nakakakita sa amin online. Highly recommended para sa lahat ng negosyante dito sa Pinas!"</p>
-        <div style="display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid rgba(255,255,255,.07);">
-          <div class="avatar">M</div>
-          <div>
-            <div style="font-weight:600;font-size:.95rem;">Maria Santos</div>
-            <div style="font-size:.78rem;color:rgba(255,255,255,.4);">Satisfied Client · Quezon City</div>
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-eyebrow">Client Results</div>
+        <h2 class="section-title">Philippine Businesses<br>Growing With Steven</h2>
+      </div>
+      <div class="testi-grid fade-in" style="transition-delay:0.1s;">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">"Within 2 weeks of our new website going live, online reservations tripled. Steven delivered exactly what he promised — and faster than any other agency we tried."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">MC</div>
+            <div>
+              <div class="testi-name">Maria Clara R.</div>
+              <div class="testi-biz">Cafe Owner · Quezon City</div>
+            </div>
           </div>
         </div>
-      </div>
-      <!-- Card 2 -->
-      <div class="glass review-card reveal" style="transition-delay:.15s">
-        <div style="color:#c9a84c;font-size:1.1rem;margin-bottom:16px;letter-spacing:2px;">★★★★★</div>
-        <p style="color:rgba(255,255,255,.7);font-size:.92rem;line-height:1.75;margin-bottom:20px;font-style:italic;">"Ang ganda ng website na ginawa nila para sa aming restaurant. Mobile-friendly, mabilis, at very professional ang dating. Tuloy-tuloy na ang mga orders!"</p>
-        <div style="display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid rgba(255,255,255,.07);">
-          <div class="avatar" style="background:linear-gradient(135deg,#3a6a9a,#1a3a6a);">R</div>
-          <div>
-            <div style="font-weight:600;font-size:.95rem;">Rico Dela Cruz</div>
-            <div style="font-size:.78rem;color:rgba(255,255,255,.4);">Restaurant Owner · Marikina</div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">"I was scared to invest in a website. The zero-risk prototype changed everything. I saw my salon's site fully designed before paying — napaka-professional!"</p>
+          <div class="testi-author">
+            <div class="testi-avatar">AL</div>
+            <div>
+              <div class="testi-name">Angel Lim</div>
+              <div class="testi-biz">Salon Owner · Makati</div>
+            </div>
           </div>
         </div>
-      </div>
-      <!-- Card 3 -->
-      <div class="glass review-card reveal" style="transition-delay:.3s">
-        <div style="color:#c9a84c;font-size:1.1rem;margin-bottom:16px;letter-spacing:2px;">★★★★★</div>
-        <p style="color:rgba(255,255,255,.7);font-size:.92rem;line-height:1.75;margin-bottom:20px;font-style:italic;">"I was skeptical at first but they delivered beyond expectations. Our online inquiries tripled within the first month. Best investment I've made for my small business!"</p>
-        <div style="display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid rgba(255,255,255,.07);">
-          <div class="avatar" style="background:linear-gradient(135deg,#6a3a9a,#3a1a6a);">A</div>
-          <div>
-            <div style="font-weight:600;font-size:.95rem;">Ana Reyes</div>
-            <div style="font-size:.78rem;color:rgba(255,255,255,.4);">Local Business Owner · Pasig</div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">"Our gym membership inquiries went up by 4x in the first month. The site looks like it was made for a mall chain, but Steven made it specifically for us."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">JD</div>
+            <div>
+              <div class="testi-name">Jake Domingo</div>
+              <div class="testi-biz">Gym Owner · Mandaluyong</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- CTA below reviews -->
-    <div class="text-center mt-14 reveal">
-      <p style="color:rgba(255,255,255,.5);margin-bottom:24px;font-size:.95rem;">Ready to join our growing list of happy clients?</p>
-      <div class="pulse-btn" style="display:inline-block;">
-        <a href="tel:09000000000">
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-          Call Us Today
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
+</main>
 
-<!-- ════════════════════ CONTACT FOOTER ════════════════════ -->
-<footer id="contact" style="padding:80px 0 40px;border-top:1px solid rgba(201,168,76,.12);">
-  <div class="max-w-5xl mx-auto px-6">
-    <div class="grid md:grid-cols-3 gap-12 mb-16">
-      <!-- Brand -->
-      <div class="reveal">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
-          <div style="width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#c9a84c,#6a4a10);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.1rem;color:#fff;">YB</div>
-          <span style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;">Your Business Name Here</span>
-        </div>
-        <p style="color:rgba(255,255,255,.4);font-size:.88rem;line-height:1.7;margin-bottom:20px;">Professional websites for Philippine businesses. Fast. Beautiful. Affordable.</p>
-        <div style="display:flex;gap:10px;">
-          <!-- Facebook -->
-          <a href="#" class="social-btn" title="Facebook">
-            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Steven<span>.</span></div>
+        <p class="footer-desc">Custom business engines for Philippine cafes, salons, gyms, auto shops, and restaurants. Built to convert. Built to impress.</p>
+        <div class="footer-contact">
+          <a href="tel:09623797660" aria-label="Call Steven Designs">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            0962-379-7660
           </a>
-          <!-- Instagram -->
-          <a href="#" class="social-btn" title="Instagram">
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-          </a>
-          <!-- TikTok -->
-          <a href="#" class="social-btn" title="TikTok">
-            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.9a8.19 8.19 0 004.79 1.52V7a4.85 4.85 0 01-1.02-.31z"/></svg>
+          <a href="mailto:steven.designs21@gmail.com" aria-label="Email Steven Designs">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            steven.designs21@gmail.com
           </a>
         </div>
       </div>
-
-      <!-- Find Us -->
-      <div class="reveal" style="transition-delay:.1s">
-        <h3 style="font-size:1rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:16px;">Find Us</h3>
-        <div style="display:flex;flex-direction:column;gap:12px;">
-          <div style="display:flex;align-items:flex-start;gap:10px;color:rgba(255,255,255,.6);font-size:.9rem;">
-            <span style="margin-top:2px;color:var(--gold);">📍</span>
-            <span>123 Street, Your City<br/>Philippines</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.6);font-size:.9rem;">
-            <span style="color:var(--gold);">📞</span>
-            <a href="tel:09000000000" style="color:inherit;text-decoration:none;">0900 000 0000</a>
-          </div>
-          <div style="display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.6);font-size:.9rem;">
-            <span style="color:var(--gold);">✉️</span>
-            <a href="mailto:hello@yourbusiness.ph" style="color:inherit;text-decoration:none;">hello@yourbusiness.ph</a>
-          </div>
-          <div style="display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.6);font-size:.9rem;">
-            <span style="color:var(--gold);">🕐</span>
-            <span>Mon–Sat · 8AM–6PM</span>
-          </div>
-        </div>
+      <div>
+        <div class="footer-col-title">Pages</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Steven</a></li>
+          <li><a href="services.html">Services &amp; Pricing</a></li>
+          <li><a href="contact.html">Start a Project</a></li>
+        </ul>
       </div>
-
-      <!-- Map placeholder -->
-      <div class="reveal" style="transition-delay:.2s">
-        <h3 style="font-size:1rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:16px;">Map</h3>
-        <div class="glass rounded-2xl overflow-hidden" style="height:160px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;border:1px dashed rgba(201,168,76,.3);">
-          <span style="font-size:2rem;">🗺️</span>
-          <span style="font-size:.8rem;color:rgba(255,255,255,.35);">123 Street, Your City</span>
-          <a href="https://maps.google.com" target="_blank" style="font-size:.78rem;color:var(--gold);text-decoration:none;letter-spacing:.06em;">Open in Google Maps ↗</a>
-        </div>
+      <div>
+        <div class="footer-col-title">Industries</div>
+        <ul class="footer-links">
+          <li><a href="services.html">Cafe &amp; Coffee Shop</a></li>
+          <li><a href="services.html">Salon &amp; Spa</a></li>
+          <li><a href="services.html">Gym &amp; Fitness</a></li>
+          <li><a href="services.html">Auto Repair &amp; Detailing</a></li>
+          <li><a href="services.html">Restaurant &amp; Food &amp; Bev</a></li>
+        </ul>
       </div>
     </div>
-
-    <!-- Bottom bar -->
-    <div style="padding-top:28px;border-top:1px solid rgba(255,255,255,.06);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;">
-      <p style="font-size:.8rem;color:rgba(255,255,255,.25);">© 2025 Your Business Name Here. All rights reserved.</p>
-      <p style="font-size:.8rem;color:rgba(255,255,255,.18);">Built with ❤️ for Philippine Businesses</p>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Steven Designs. All rights reserved. Philippines.</div>
+      <div class="footer-made">Built with obsession — not templates.</div>
     </div>
   </div>
 </footer>
 
 <script>
-// ── Carousel ──
-let current = 0;
-const track = document.getElementById('track');
-const dots = document.querySelectorAll('.dot');
-const total = 3;
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileNav.classList.toggle('open');
+  });
 
-function goTo(n) {
-  current = (n + total) % total;
-  track.style.transform = `translateX(-${current * 100}%)`;
-  dots.forEach((d, i) => d.classList.toggle('active', i === current));
-}
-function slide(dir) { goTo(current + dir); }
-
-// Auto-advance
-setInterval(() => slide(1), 5000);
-
-// ── Scroll reveal ──
-const reveals = document.querySelectorAll('.reveal');
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-}, { threshold: 0.12 });
-reveals.forEach(el => io.observe(el));
-
-// ── Navbar scroll tint ──
-window.addEventListener('scroll', () => {
-  document.querySelector('nav').style.background =
-    window.scrollY > 40 ? 'rgba(8,12,20,0.92)' : 'rgba(8,12,20,0.70)';
-});
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
